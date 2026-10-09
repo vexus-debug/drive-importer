@@ -103,8 +103,8 @@ export function Roads() {
       }
     }
     return {
-      two: geom(...buckets.two!), one: geom(...buckets.one!), foot: geom(...buckets.foot!),
-      deck2: geom(...buckets.deck2!), deck1: geom(...buckets.deck1!),
+      two: geom(...buckets["two"]!), one: geom(...buckets["one"]!), foot: geom(...buckets["foot"]!),
+      deck2: geom(...buckets["deck2"]!), deck1: geom(...buckets["deck1"]!),
       side: geom(side, side.map(() => 0).slice(0, (side.length / 3) * 2), sideIdx), piers,
     };
   }, []);
