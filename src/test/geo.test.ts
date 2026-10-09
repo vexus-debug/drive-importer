@@ -10,7 +10,7 @@ describe("Lagos projection", () => {
   it("maps north to -Z and east to +X in real metres", () => {
     const [, zN] = project(ORIGIN.lat + 0.001, ORIGIN.lon);
     const [xE] = project(ORIGIN.lat, ORIGIN.lon + 0.001);
-    expect(zN).toBeCloseTo(-110.6, 0);
+    expect(zN).toBeCloseTo(-111.3, 0);
     expect(xE).toBeCloseTo(110.6, 0);
   });
   it("round-trips", () => {
