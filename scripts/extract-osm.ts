@@ -121,14 +121,14 @@ async function main() {
     const t = e.tags ?? {};
     const wk = t.natural === "coastline" ? "coastline" : t.natural === "water" ? "water" : t.waterway;
     if (!wk || t.building || t.highway) continue;
-    const kind = Math.max(0, WATER_KINDS.indexOf(wk as never)) || (WATER_KINDS.indexOf(wk as never) < 0 ? WATER_KINDS.indexOf("other") : 0);
+    const wi = WATER_KINDS.indexOf(wk as never);
+    const kind = wi < 0 ? WATER_KINDS.indexOf("other") : wi;
     const add = (g: G[], id: number) => {
       const closed = g.length > 3 && g[0].lat === g.at(-1)!.lat && g[0].lon === g.at(-1)!.lon;
       water.push({ id, name: t.name, kind, closed, path: proj(g, 0.5) });
     };
     if (e.type === "way" && e.geometry) add(e.geometry, e.id);
     else if (e.type === "relation") e.members?.forEach((m) => m.role === "outer" && m.geometry && add(m.geometry, e.id));
-    if (e.type === "node" && t.amenity) continue;
   }
   for (const e of els) if (e.type === "node" && e.tags?.amenity && e.lat != null) {
     const [x, z] = project(e.lat, e.lon!);
