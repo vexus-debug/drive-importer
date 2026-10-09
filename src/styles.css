@@ -19,6 +19,18 @@
  */
 
 @theme inline {
+  --font-display: "Bungee", Impact, sans-serif;
+  --font-hud: "Chakra Petch", system-ui, sans-serif;
+  --color-hud-ink: var(--hud-ink);
+  --color-hud-shadow: var(--hud-shadow);
+  --color-hud-panel: var(--hud-panel);
+  --color-hud-cash: var(--hud-cash);
+  --color-hud-health: var(--hud-health);
+  --color-hud-stamina: var(--hud-stamina);
+  --color-hud-star: var(--hud-star);
+  --color-hud-mission: var(--hud-mission);
+  --color-hud-overlay: var(--hud-overlay);
+  --color-hud-wasted: var(--hud-wasted);
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -62,6 +74,16 @@
 }
 
 :root {
+  --hud-ink: oklch(0.98 0.01 90);
+  --hud-shadow: oklch(0.15 0.02 60);
+  --hud-panel: oklch(0.15 0.02 60 / 0.55);
+  --hud-cash: oklch(0.78 0.2 145);
+  --hud-health: oklch(0.62 0.22 25);
+  --hud-stamina: oklch(0.75 0.15 230);
+  --hud-star: oklch(0.87 0.18 90);
+  --hud-mission: oklch(0.72 0.2 350);
+  --hud-overlay: oklch(0.2 0.04 50 / 0.72);
+  --hud-wasted: oklch(0.3 0.1 25 / 0.45);
   --radius: 0.625rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.129 0.042 264.695);
