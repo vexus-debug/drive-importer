@@ -14,3 +14,5 @@
 - Cars and pedestrians use CC0 Kenney GLBs from `public/models/` (external `Textures/colormap.png` must sit beside them), loaded in `src/game/RealModels.tsx`; Keke stays procedural because no CC0 tricycle exists in the kit.
 - Buildings carry a `kind` (bank/office/hotel/residential/cafe/restaurant/shop/heritage) assigned in `world.ts` with its own seeded RNG, rendered per facade family in `src/game/Buildings.tsx` — keeps street layout stable while typology changes.
 - Danfo, BRT, Keke and Okada are procedural with canvas liveries in `src/game/Vehicles.tsx`; sedans/police stay Kenney GLBs — no CC0 models exist for Lagos transport.
+- Real Lagos map data is pre-baked from OpenStreetMap into `src/game/data/lagos-island.json` by `scripts/extract-osm.ts` (verify with `scripts/verify-osm-data.ts`); the game never calls Overpass at runtime — instant load, no rate limits.
+- All lat/lon → game metres conversion goes through `src/game/geo.ts` (origin Marina/CMS, +X east, -Z north) — one projection keeps every layer aligned.
