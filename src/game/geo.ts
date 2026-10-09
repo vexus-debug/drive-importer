@@ -28,10 +28,10 @@ export function simplify(pts: [number, number][], eps: number): [number, number]
   while (stack.length) {
     const [a, b] = stack.pop()!;
     const [ax, az] = pts[a], [bx, bz] = pts[b];
-    const dx = bx - ax, dz = bz - az, L = Math.hypot(dx, dz) || 1e-9;
+    const dx = bx - ax, dz = bz - az, L = Math.hypot(dx, dz);
     let best = -1, idx = -1;
     for (let i = a + 1; i < b; i++) {
-      const d = Math.abs(dx * (az - pts[i][1]) - dz * (ax - pts[i][0])) / L;
+      const d = L < 1e-6 ? Math.hypot(pts[i][0] - ax, pts[i][1] - az) : Math.abs(dx * (az - pts[i][1]) - dz * (ax - pts[i][0])) / L;
       if (d > best) { best = d; idx = i; }
     }
     if (best > eps) { keep[idx] = 1; stack.push([a, idx], [idx, b]); }
